@@ -1,9 +1,11 @@
 let assert = require('assert');
+let expect = require('chai').expect;
 // import MyMath from '../src/utils/my-math';
 let MyMath = require('../src/utils/my-math');
 
 describe('测试 MyMath', function () {
   let my;
+
   // 每个测试套件执行一次
   before(function () {
     my = new MyMath();
@@ -16,10 +18,11 @@ describe('测试 MyMath', function () {
   });
   afterEach(function () {
   });
-  it('测试加法', function(done) {
+  it('测试加法', function (done) {
     let m1 = my.sum(1, 2);
 
-    assert.ok(m1 == 3);
+    // assert.ok(m1 == 3);
+    expect(m1).to.equal(3);
 
     my.sum_async(2, 4, function (m2) {
       assert.ok(m2 == 6);
@@ -27,9 +30,12 @@ describe('测试 MyMath', function () {
       done();
     })
   });
-  it('测试乘法', function() {
+  it('测试乘法', function () {
     let m1 = my.multi(1, 2);
 
     assert.ok(m1 == 2);
+  });
+  it('又一个测试', function () {
+    expect([1, 2]).to.be.an('array').that.does.not.include(3);
   });
 });
